@@ -1,0 +1,123 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Digital Sociology Master's Degree Online at VCU</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="apple-touch-icon" href="icon.png">
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.3/css/bootstrap.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin="" />
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw==" crossorigin=""></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="js/main.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" media="screen" href="css/main.css">
+    </style>
+</head>
+
+<body>
+    <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+    <!-- Add your site or application content here -->
+    <div class="container-fluid">
+        <div class="hand">
+          <div class="jumbotron black">
+              <h1 class="display-3" id="title">VCU<br> Digital<br> Sociology</h1>
+              <p class="lead" id="hook-text"></p>
+          </div>
+          <div class="row section" id="mapid">
+            <div class="col-md-4 offset-md-1" id="city-data">
+              Here by city data
+            </div>          
+            <div class="col-md-3 offset-md-4 graph" id="loc-graph">
+              <h2>GRAPHS</h2>
+            </div>
+          </div>
+            <img src="imgs/dig_soc_hand.png" alt="A hand composed of multi-colored pixels holds a chunk of neighborhood as represented by colored data blocks.">  
+        </div>  
+        <div class="row">
+          <div class="col-md-10 offset-md-1"><p id="data-map">*We also build and use cool tools like this to help us understand data. BTW, we just mapped your publicly available location data to census information.</p></div>
+        </div>
+        <div class="row section stripes" id="menu">
+            <div class="col-md-3">
+                <a class="btn btn-primary btn-lg btn-soc" href="#courses" role="button">Our Courses</a>
+            </div>
+            <div class="col-md-3">
+                <a class="btn btn-primary btn-lg btn-soc" href="#faculty" role="button">Our Faculty</a>
+            </div>
+            <div class="col-md-3">
+                <a class="btn btn-primary btn-lg btn-soc" href="#work" role="button">Our Work</a>
+            </div>
+            <div class="col-md-3 buttons">
+                <a class="btn btn-primary btn-lg btn-soc" href="#courses" role="button">Join Our Mailing List</a>
+            </div>
+        </div>
+        <div class="row section stripes" id="description">
+            <div class="question-content col-md-10 offset-md-1">
+                <h2 id="question">What is Digital Sociology and why VCU?</h2>
+                <div id="question-response">
+                    Curabitur lobortis id lorem id bibendum. Ut id consectetur magna. Quisque volutpat augue enim, pulvinar lobortis nibh lacinia at. Vestibulum nec erat ut mi sollicitudin porttitor id sit amet VCU. Nam tempus vel odio vitae aliquam. In imperdiet eros id lacus vestibulum vestibulum. Suspendisse fermentum sem sagittis ante venenatis egestas quis vel justo. Maecenas semper suscipit nunc, sed aliquam sapien convallis eu. Nulla ut turpis in diam dapibus consequat.
+                </div>
+            </div>
+        </div>
+        <div class="row section" id="courses">
+            <div class="col-md-12"><h2>Courses</h2></div>
+            <div class="col-md-3">
+              <div class="semester">
+                <h3>Semester 1</h3>
+                <div id="sem-1"></div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="semester">              
+                <h3>Semester 2</h3>
+                <div id="sem-2"></div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="semester">              
+                <h3>Semester 3</h3>
+                <div id="sem-3"></div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="semester">              
+                <h3>Semester 4</h3>              
+                <div id="sem-4"></div>
+              </div>
+            </div>
+        </div>
+        <div class="row section" id="faculty">
+            <div class="stripes">
+                <h2>Our Faculty</h2>
+            </div>
+        </div>
+        <div class="stripes"></div>
+        <div class="color-stack">
+            <div class="aqua"></div>
+            <div class="orange"></div>
+            <div class="pink"></div>
+        </div>
+        <div class="row section" id="work">
+            <h2>Work</h2>
+        </div>
+        <div class="row footer">
+            <div class="col-md-5 offset-md-1 footer-header">
+                <a class="btn-primary btn-lg btn btn-contact" href="#">Contact Us</a>
+            </div>
+            <div class="col-md-5 footer-header">right
+            </div>
+            <div class="col-md-10 offset-md-1" id="footer">
+            </div>
+        </div>
+    </div>
+   
+</body>
+
+</html>
