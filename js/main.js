@@ -108,6 +108,7 @@ fetch("//freegeoip.net/json/"
           var state = location.region_code;
           mapMaker(lat, long);
           var geoId = getGeoId(city, state);
+          basicName(city,state); //set name of location basics 
       }
     })
 
@@ -115,6 +116,16 @@ fetch("//freegeoip.net/json/"
 function blockContent(){
     var blockDiv = document.getElementById('data-map');
     blockDiv.innerHTML = 'You are running an ad blocker or something similar. That is AWESOME! Part of digital sociology is understanding how and to whom your data is shared. Other users will see data contextualized by their geographic area. We are giving you data for Richmond, VA.';
+}
+
+//set city demo box 
+
+function basicName(city, state){
+  var theCity = document.getElementById('city');
+  theCity.innerHTML = city;
+  var theState = document.getElementById('state');
+  theState.innerHTML = state;
+
 }
 
 
