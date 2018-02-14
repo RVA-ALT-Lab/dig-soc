@@ -3,6 +3,8 @@ const isHook = data => data.slug == "hook-text";
 const isFooter = data => data.slug == "footer";
 const isFaculty = data => data.categories[0] == 2;
 const isCourse = data => data.categories[0] == 3;
+var geoId = '';
+
 //GET WORDPRESS JSON CONTENT
 fetch(
         "https://rampages.us/digitalsocy-pr/wp-json/wp/v2/posts?_embed&per_page=30"
@@ -16,9 +18,10 @@ fetch(
         var faculty = data.filter(isFaculty);
         var courses = data.filter(isCourse);
         var footer = data.filter(isFooter);
-        setContent(hook);
+        setContent(data);
         setCourses(courses);
         setFac(faculty);
+
         setContent(footer);
     });
 
@@ -31,6 +34,7 @@ function setContent(data) {
         }
     }
 }
+
 
 //append courses
 function setCourses(data) {
@@ -88,43 +92,45 @@ function scrollTo(id) {
 /*MAP STUFF*/
 
 //get IP to lat/long
-fetch("//freegeoip.net/json/"
-    ).catch(function() {
-        var lat = 37.5538;
-        var long = -77.4603;
+fetch("//freegeoip.net/json/").catch(function() {
+    var lat = 37.5538;
+    var long = -77.4603;
+    mapMaker(lat, long);
+    blockContent(); //alt text for sites that are blocking IP address 
+    var city = 'Richmond';
+    var state = 'VA';
+}).then(function(response) {
+    // Convert to JSON
+    if (response) {
+        return response.json();
+    }
+}).then(function(data) {
+    if (data) {
+        var location = data;
+        var lat = location.latitude;
+        var long = location.longitude;
+        var city = location.city;
+        var state = location.region_code;
         mapMaker(lat, long);
-        blockContent();
-    }).then(function(response) {
-        // Convert to JSON
-        if(response){
-         return response.json();
-      }
-    }).then(function(data) {
-        if (data){
-          var location = data;
-          var lat = location.latitude;
-          var long = location.longitude;
-          var city = location.city;
-          var state = location.region_code;
-          mapMaker(lat, long);
-          var geoId = getGeoId(city, state);
-          basicName(city,state); //set name of location basics 
-      }
-    })
+        geoId = getGeoId(city, state);
+        console.log('geoId - ' + geoId);
+        basicName(city, state); //set name of location basics 
+    }
+})
 
 //AD BLOCKER on or some other failure . . . 
-function blockContent(){
+function blockContent() {
     var blockDiv = document.getElementById('data-map');
     blockDiv.innerHTML = 'You are running an ad blocker or something similar. That is AWESOME! Part of digital sociology is understanding how and to whom your data is shared. Other users will see data contextualized by their geographic area. We are giving you data for Richmond, VA.';
 }
 
 //set city demo box 
 
-function basicName(city, state){
-  var theCity = document.getElementById('city');
-  theCity.innerHTML = city;
-  var theState = document.getElementById('state');
-  theState.innerHTML = state;
+function basicName(city, state) {
+    var theCity = document.getElementById('city');
+    theCity.innerHTML = city;
+    var theState = document.getElementById('state');
+    theState.innerHTML = state;
 
 }
 
@@ -162,12 +168,139 @@ var geoId;
 function getGeoId(city, state) {
     var location = city + '%2C%20' + state;
     var url = 'https://api.censusreporter.org/1.0/geo/search?q=' + location;
-    $.getJSON(url, function(data) {
+    $.getJSON(url, function(data) {}).done(function(data) {
         geoId = data.results[0].full_geoid;
-        //return geoId;
-    }).done(function() {
-        console.log('geoId ' + geoId);
+        console.log('getGeoId ' + geoId);
+        makeData(geoId);
+        console.log('two-' + data.results[0].full_geoid);
+        return geoId;
     })
+}
+
+
+
+
+
+
+/*POPULATION DATA*/
+//https://api.censusreporter.org/1.0/data/show/latest?table_ids=B01001&geo_ids=&valueType=percentage
+//https://censusreporter.org/data/table/?table=B01001&geo_ids=16000US5367000&primary_geo_id=16000US5367000#valueType|percentage
+//https://censusreporter.org/data/table/?table=B01001&primary_geo_id=16000US5367000&geo_ids=16000US5367000
+
+//income quintiles table = B19081
+const table = 'B01001';
+var total = '';
+
+
+function makeData(geoId) {
+    var url = 'https://api.censusreporter.org/1.0/data/show/latest?table_ids=' + table + '&geo_ids=' + geoId + '&valueType=percentage';
+
+    fetch(url)
+        .then(function(response) {
+            // Convert to JSON
+            return response.json();
+        })
+        .then(function(data) {
+            console.log(data);
+            var columns = data.tables[table];
+            var nums = data.data[geoId][table]['estimate'];
+
+            var mainTitle = columns['title'];
+            var titles = columns['columns'];
+            //console.log(columns);
+            var numColumns = Object.keys(titles).length;
+            var numNums = Object.keys(nums).length;
+            var niceData = [];
+            var chartNums = [];
+            var chartNames = [];
+            for (i = 0; i < numColumns; i++) {
+                var title = titles[Object.keys(titles)[i]].name;
+                var number = nums[Object.keys(nums)[i]];
+                if (i > 0 && title != 'Male:' && title != 'Female:') { //skips the total number column
+                    chartNums.push(number);
+                    chartNames.push(title);
+                    niceData[title] = number;
+                } else {
+                    if (title == 'Male:' || title == 'Female:') {
+                        total = number;
+                        console.log('n ' + number);
+                        console.log('t ' + total);
+                    }
+                }
+            }
+            console.log(niceData);
+            makeChart(chartNames, chartNums, ' ');
+        }).then(function() {
+            totalPop(total);
+        });
+
+}
+
+function totalPop(total) {
+    var pop = document.getElementById('pop');
+    pop.innerHTML = total;
+}
+
+function makeChart(labels, numbers, title) {
+    var ctx = document.getElementById("myChart").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'horizontalBar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: title,
+                data: numbers,
+                backgroundColor: '#00838b',
+            }]
+        },
+
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            },
+            legend: false,
+        }
+    });
+    Chart.defaults.global.defaultFontColor = '#000';
+}
+
+//MEDIUM WORK AROUND
+
+const medUrl = 'https://rampages.us/dig-socy-medium/wp-json/wp/v2/posts?_embed'; // a site that just syndicates medium posts for json
+
+fetch(medUrl).catch(function() {
+
+}).then(function(response) {
+    // Convert to JSON
+    if (response) {
+        return response.json();
+    }
+}).then(function(data) {
+   console.log(data);
+   makeMedium(data);
+    }
+)
+
+
+//append courses
+function makeMedium(data) {
+    for (i = 0; i < data.length; i++) {
+        var node = document.createElement("a");
+        var textnode = document.createTextNode(data[i].title.rendered);
+
+        node.appendChild(textnode);
+        node.href = data[i].link;
+        node.classList.add("medium", "medium-title");
+       if (i<=4){
+        document.getElementById("medium-content-one").appendChild(node);        
+      } else {
+        document.getElementById("medium-content-two").appendChild(node);        
+      }
+    }
 }
 
 
@@ -213,4 +346,3 @@ $(document).ready(function() {
             }
         });
 });
-

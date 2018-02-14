@@ -16,6 +16,7 @@
     <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw==" crossorigin=""></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="js/main.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js" type="text/javascript" charset="utf-8"></script>
     <link rel="stylesheet" media="screen" href="css/main.css">
     </style>
 </head>
@@ -34,9 +35,13 @@
           <div class="row section" id="mapid">
             <div class="col-md-4 offset-md-1" id="city-data">
               <h2 class="demographic"><span id="city"></span>, <span id="state"></span></h2>
+              <h3>Population <span id="pop"></span></h3>
+
             </div>          
             <div class="col-md-3 offset-md-4 graph" id="loc-graph">
               <h2>GRAPHS</h2>
+              <canvas id="myChart" width="100%" height="200px"></canvas>
+              bottom
             </div>
           </div>
             <img src="imgs/dig_soc_hand.png" alt="A hand composed of multi-colored pixels holds a chunk of neighborhood as represented by colored data blocks.">  
@@ -61,8 +66,7 @@
         <div class="row section stripes" id="description">
             <div class="question-content col-md-10 offset-md-1">
                 <h2 id="question">What is Digital Sociology and why VCU?</h2>
-                <div id="question-response">
-                    Curabitur lobortis id lorem id bibendum. Ut id consectetur magna. Quisque volutpat augue enim, pulvinar lobortis nibh lacinia at. Vestibulum nec erat ut mi sollicitudin porttitor id sit amet VCU. Nam tempus vel odio vitae aliquam. In imperdiet eros id lacus vestibulum vestibulum. Suspendisse fermentum sem sagittis ante venenatis egestas quis vel justo. Maecenas semper suscipit nunc, sed aliquam sapien convallis eu. Nulla ut turpis in diam dapibus consequat.
+                <div id="why-vcu">                    
                 </div>
             </div>
         </div>
@@ -93,8 +97,15 @@
               </div>
             </div>
         </div>
+         <div class="row section stripes" id="knowledge">
+            <div class="question-content col-md-10 offset-md-1">
+                <h2 id="question">What will you do with your knowledge?</h2>
+                <div id="your-knowledge">                    
+                </div>
+            </div>
+        </div>
         <div class="row section" id="faculty">
-            <div class="stripes">
+            <div class="col-md-12 stripes">
                 <h2>Our Faculty</h2>
             </div>
         </div>
@@ -105,7 +116,11 @@
             <div class="pink"></div>
         </div>
         <div class="row section" id="work">
-            <h2>Work</h2>
+            <div class="col-md-12 stripes"><h2>Work</h2></div>
+            <div class="col-md-5 offset-md-1" id="medium-content-one">
+            </div>
+             <div class="col-md-5" id="medium-content-two">
+            </div>
         </div>
         <div class="row footer">
             <div class="col-md-5 offset-md-1 footer-header">

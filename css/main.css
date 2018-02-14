@@ -201,7 +201,20 @@ h2 {
 
 .course-item {
   color: #00838b;
-  font-weight: 700; }
+  font-weight: 700;
+  margin-bottom: .3em; }
+
+/*MEDIUM STUFF*/
+.medium-title {
+  display: block;
+  width: 80%;
+  margin-bottom: .3em;
+  color: #00838b;
+  padding: 5px 10px; }
+
+.medium-title:hover {
+  background-color: #BD10E0;
+  color: #fff; }
 
 /*MOBILE LAND*/
 /* Smartphones (portrait and landscape) ----------- */
