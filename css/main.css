@@ -28,12 +28,11 @@ h2 {
 
 .hand img {
   position: absolute;
-  width: 80%;
-  height: 80%;
   top: 0;
   right: 0;
   display: block;
-  z-index: 12000; }
+  z-index: 12000;
+  padding: 0 0 30% 30%; }
 
 /*MAP RELATED OVERLAYS*/
 #loc-graph {

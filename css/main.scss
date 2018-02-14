@@ -35,17 +35,16 @@ h2 {
 }
 
 .hand {
-	position: relative;	
+	position: relative;
 }
 
 .hand img {
   position:absolute;
-  width:80%;
-  height:80%;
   top:0;
   right:0;
   display: block;
   z-index: 12000;
+  padding:0 0 30% 30%;
 }
 
 
