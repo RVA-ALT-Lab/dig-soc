@@ -45,6 +45,7 @@ function setCourses(data) {
         node.appendChild(textnode);
         node.classList.add("course", "course-item");
         node.setAttribute('data-slug', data[i].slug);
+        node.setAttribute('tabindex', 0);
         var hasCat = data[i].categories;
         if (hasCat.includes(4)) {
             document.getElementById("sem-1").appendChild(node);
@@ -73,8 +74,9 @@ function showCourseDetail(){
         $(courses[i]).click(function() {
         var slug = $(this).data('slug');        
         var description = document.getElementById('course-'+slug).innerHTML;
-        document.getElementById('show-course-detail').innerHTML = description;
-        slug.focus();
+        var detail = document.getElementById('show-course-detail');
+        detail.innerHTML = description;
+        detail.focus();
     });
     }
 }
