@@ -20,9 +20,10 @@ fetch(
         var footer = data.filter(isFooter);
         setContent(data);
         setCourses(courses);
+        setCourseDetail(courses);
         setFac(faculty);
-
         setContent(footer);
+        showCourseDetail();
     });
 
 function setContent(data) {
@@ -43,6 +44,7 @@ function setCourses(data) {
         var textnode = document.createTextNode(data[i].title.rendered);
         node.appendChild(textnode);
         node.classList.add("course", "course-item");
+        node.setAttribute('data-slug', data[i].slug);
         var hasCat = data[i].categories;
         if (hasCat.includes(4)) {
             document.getElementById("sem-1").appendChild(node);
@@ -55,6 +57,28 @@ function setCourses(data) {
         }
     }
 }
+
+
+function setCourseDetail(data) {
+    for (i = 0; i < data.length; i++) {
+        var hasCat = data[i].categories;
+        var holder = document.getElementById("course-detail");
+        holder.insertAdjacentHTML('beforeend', '<div class="course-description" id="course-'+data[i].slug+'"><h3>'+data[i].title.rendered+'</h3>'+data[i].content.rendered+'</div>');
+    }
+}
+
+function showCourseDetail(){
+    var courses = document.getElementsByClassName('course-item');
+    for (i = 0; i < courses.length; i++){
+        $(courses[i]).click(function() {
+        var slug = $(this).data('slug');        
+        var description = document.getElementById('course-'+slug).innerHTML;
+        document.getElementById('show-course-detail').innerHTML = description;
+        slug.focus();
+    });
+    }
+}
+
 
 function setFaculty(data) {
     for (i = 0; i < data.length; i++) {
@@ -74,7 +98,7 @@ function setFac(data) {
         var title = data[i].acf.title;
         var img = data[i].acf.headshot_url.url;
         var fac = document.getElementById("faculty");
-        fac.insertAdjacentHTML('beforeend', '<div class="col-md-3"><img class="fac-head" src="' + img + '" alt="A photo of ' + name + '."></img><h3>' + name + '</h3>' + title + '</div>');
+        fac.insertAdjacentHTML('beforeend', '<div class="col-md-3"><img class="fac-head" src="' + img + '" alt="A photo of ' + name + '."></img><div class="faculty-details"><h3>' + name + '</h3><div class="faculty-title">' + title + '</div></div></div>');
     }
 }
 

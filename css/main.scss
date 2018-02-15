@@ -44,7 +44,7 @@ h2 {
   right:0;
   display: block;
   z-index: 12000;
-  padding:0 0 30% 30%;
+  max-height: 900px;
 }
 
 
@@ -211,6 +211,10 @@ h2 {
   margin-bottom: 2em;
 }
 
+.faculty-details{
+  margin-bottom: 4em;
+}
+
 .color-stack {
   width: 20px;
   margin: -2em auto;
@@ -232,6 +236,10 @@ h2 {
 }
 
 
+:focus {
+  border: 2px red solid;
+}
+
 /*SEMESTER*/
 
 .semester {
@@ -249,8 +257,12 @@ h2 {
 	color: $aqua;
 	font-weight: 700;
   margin-bottom: .3em;
+  cursor: pointer;
 }
 
+.course-description {
+  display: none;
+}
 
 /*MEDIUM STUFF*/
 
