@@ -76,6 +76,7 @@ function showCourseDetail(){
         var description = document.getElementById('course-'+slug).innerHTML;
         var detail = document.getElementById('show-course-detail');
         detail.innerHTML = description;
+        detail.classList.add('show-course');
         detail.focus();
     });
     }

@@ -116,6 +116,10 @@ h2 {
   padding: 2em 0;
   line-height: 1.2; }
 
+.footer a {
+  color: #fff;
+  text-decoration: underline; }
+
 .footer-header {
   margin-bottom: 3em; }
 
@@ -157,6 +161,9 @@ h2 {
   color: #fff;
   border: 4px solid #FFB300; }
 
+a.btn-contact {
+  color: #BD10E0; }
+
 #faculty h2 {
   margin-bottom: 2em; }
 
@@ -191,9 +198,6 @@ h2 {
   height: 20px;
   background-color: #BD10E0; }
 
-:focus {
-  border: 2px red solid; }
-
 /*SEMESTER*/
 .semester {
   border: 8px solid #FFB300;
@@ -212,6 +216,13 @@ h2 {
 
 .course-description {
   display: none; }
+
+.show-course {
+  margin-top: 2em;
+  background-color: #BD10E0;
+  color: #fff;
+  padding: 1em;
+  min-height: 10em; }
 
 /*MEDIUM STUFF*/
 .medium-title {
