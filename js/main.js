@@ -82,7 +82,7 @@ function showCourseDetail(){
     }
 }
 
-
+//FACULTY
 function setFaculty(data) {
     for (i = 0; i < data.length; i++) {
         var node = document.createElement("div");
@@ -154,10 +154,17 @@ function blockContent() {
 //set city demo box 
 
 function basicName(city, state) {
-    var theCity = document.getElementById('city');
-    theCity.innerHTML = city;
-    var theState = document.getElementById('state');
-    theState.innerHTML = state;
+    if (city && state){
+        var theCity = document.getElementById('city');
+        theCity.innerHTML = city;
+        var theState = document.getElementById('state');
+        theState.innerHTML = state;
+    } else {
+        var theCity = document.getElementById('city');
+        theCity.innerHTML = 'Richmond';
+        var theState = document.getElementById('state');
+        theState.innerHTML = 'Virginia';
+    }
 
 }
 
@@ -215,7 +222,7 @@ function getGeoId(city, state) {
 //https://censusreporter.org/data/table/?table=B01001&primary_geo_id=16000US5367000&geo_ids=16000US5367000
 
 //income quintiles table = B19081
-const table = 'B01001';
+const table = 'B17004';
 var total = '';
 
 
@@ -243,17 +250,11 @@ function makeData(geoId) {
             for (i = 0; i < numColumns; i++) {
                 var title = titles[Object.keys(titles)[i]].name;
                 var number = nums[Object.keys(nums)[i]];
-                if (i > 0 && title != 'Male:' && title != 'Female:') { //skips the total number column
+                 if (i === 0 ){} else if (i < 10) { //skips the total number column
                     chartNums.push(number);
                     chartNames.push(title);
                     niceData[title] = number;
-                } else {
-                    if (title == 'Male:' || title == 'Female:') {
-                        total = number;
-                        console.log('n ' + number);
-                        console.log('t ' + total);
-                    }
-                }
+                } 
             }
             console.log(niceData);
             makeChart(chartNames, chartNums, ' ');
@@ -274,16 +275,19 @@ function makeChart(labels, numbers, title) {
         type: 'horizontalBar',
         data: {
             labels: labels,
+
             datasets: [{
                 label: title,
-                data: numbers,
-                backgroundColor: '#00838b',
+                backgroundColor: ['#2511EE','#FFB300', '#FFB300', '#FFB300', '#FFB300','#00838b', '#00838b', '#00838b', '#00838b'],
+                data: numbers,               
             }]
         },
 
         options: {
+
             scales: {
                 yAxes: [{
+                    barThickness : 13,
                     ticks: {
                         beginAtZero: true
                     }

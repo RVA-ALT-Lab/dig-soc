@@ -99,10 +99,6 @@ h2 {
   margin: 5em 0 0 0;
 }
 
-.buttons {
-  position:relative; 
-  height: 4em;
-}
 
 .btn-soc {
   border-radius: 0;
@@ -112,7 +108,6 @@ h2 {
   width: 250px;
   color: $blue;
   margin-top: 30px;
-  position: absolute;
 }
 
 .btn-soc:hover {
@@ -263,12 +258,26 @@ a.btn-contact {
 .course-item {
 	color: $aqua;
 	font-weight: 700;
-  margin-bottom: .3em;
+  margin-bottom: .5em;
   cursor: pointer;
+  border-bottom: 1px dashed $pink;
+  padding: .3em;
+}
+
+.course-item:hover {
+  color: #fff;
+  background-color: $aqua;
 }
 
 .course-description {
   display: none;
+}
+
+#show-course-detail {
+    -webkit-transition: all .3s linear;
+    -moz-transition: all .3s linear;
+    -o-transition: all .3s linear;
+    transition: all .3s linear;
 }
 
 .show-course {
@@ -295,6 +304,30 @@ a.btn-contact {
   background-color: $pink;
   color: #fff;  
 }
+
+/*FLOATING BUTTON*/
+#contact-menu {
+  position: fixed;
+  right: -2.6em;
+  top: 50%;
+  width: 7em;
+  height: 1.9em;
+  margin-top: -2em;
+  background: #BD10E0;
+  border: solid #FFB300;
+  border-width: 4px 4px 0 4px;
+  font-size: 1.9em;
+  transform: rotate(-90deg);
+  padding: 0 0 2px 0;
+  box-shadow: rgba(0,0,0,0.5) 0 0.1em 0.5em;
+  z-index: 30000;
+}
+
+#contact-menu a {
+  text-decoration: none;
+  color: white;
+}
+
 
 
 /*MOBILE LAND*/
