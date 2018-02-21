@@ -33,14 +33,15 @@
               <p class="lead" id="hook-text"></p>
           </div>
           <div class="row section" id="mapid">
-            <div class="col-md-4 offset-md-1" id="city-data">
-              <h2 class="demographic"><span id="city"></span>, <span id="state"></span></h2>
-              <h3>Population <span id="pop"></span></h3>
+            <div class="col-md-4 offset-md-1">
+             <!--  change above to id="city-data" to show <h3>Population <span id="pop"></span></h3>-->
 
             </div>          
             <div class="col-md-3 offset-md-4 graph" id="loc-graph">
-              <h2>The Poverty Line</h2>
+              <h2>Poverty Status in the Past 12 Months</h2>
+              <h3 class="demographic"><span id="city"></span>, <span id="state"></span></h3>
               <canvas id="myChart" width="300" height="200"></canvas>
+              Data pulled from <a href="https://censusreporter.org/data/table/?table=B17004&geo_ids=16000US5167000&primary_geo_id=16000US5167000">censusreporter.org</a>.
             </div>
           </div>
             <img src="imgs/dig_soc_hand.png" class="img-fluid" alt="A hand composed of multi-colored pixels holds a chunk of neighborhood as represented by colored data blocks.">  
