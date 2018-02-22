@@ -44,10 +44,6 @@ h2 {
   height: 100%;
   z-index: 4000; }
 
-.graph h2 {
-  margin-top: 1.5em;
-  background-color: transparent; }
-
 #mapid {
   height: 600px;
   width: 100%;
@@ -66,9 +62,6 @@ h2 {
   font-weight: 400;
   text-transform: none;
   margin-top: .5em; }
-
-#mapid a {
-  text-decoration: underline; }
 
 #title {
   font-weight: 700;
@@ -116,8 +109,7 @@ h2 {
   color: #fff;
   background-color: #00838b;
   padding: 2em 0;
-  line-height: 1.2;
-  padding: 3em; }
+  line-height: 1.2; }
 
 .footer a {
   color: #fff;
@@ -237,8 +229,7 @@ a.btn-contact {
   background-color: #BD10E0;
   color: #fff;
   padding: 1em;
-  min-height: 10em;
-  opacity: 0; }
+  min-height: 10em; }
 
 /*MEDIUM STUFF*/
 .medium-title {

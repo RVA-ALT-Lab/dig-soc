@@ -78,7 +78,6 @@ function showCourseDetail(){
         detail.innerHTML = description;
         detail.classList.add('show-course');
         detail.focus();
-        detail.style.opacity = 1;        
     });
     }
 }
@@ -186,9 +185,9 @@ function mapMaker(lat, long) {
         "https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoidHd3b29kd2FyZCIsImEiOiJoamhEM2ZrIn0.VRCAedsVTQ-qdtPz8ue-5w", {
             minZoom: 14,
             maxZoom: 14,
-            attribution: '<div class="map-credit">Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+            attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
                 '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-                'Imagery © <a href="http://mapbox.com">Mapbox</a></div>',
+                'Imagery © <a href="http://mapbox.com">Mapbox</a>',
             id: "mapbox.streets"
         }
     ).addTo(map);
@@ -251,7 +250,7 @@ function makeData(geoId) {
             for (i = 0; i < numColumns; i++) {
                 var title = titles[Object.keys(titles)[i]].name;
                 var number = nums[Object.keys(nums)[i]];
-                 if (i === 0 || i === 1 ){} else if (i < 10) { //skips the total number column
+                 if (i === 0 ){} else if (i < 10) { //skips the total number column
                     chartNums.push(number);
                     chartNames.push(title);
                     niceData[title] = number;
@@ -279,7 +278,7 @@ function makeChart(labels, numbers, title) {
 
             datasets: [{
                 label: title,
-                backgroundColor: ['#FFB300', '#FFB300', '#FFB300', '#FFB300','#00838b', '#00838b', '#00838b', '#00838b'],
+                backgroundColor: ['#2511EE','#FFB300', '#FFB300', '#FFB300', '#FFB300','#00838b', '#00838b', '#00838b', '#00838b'],
                 data: numbers,               
             }]
         },
