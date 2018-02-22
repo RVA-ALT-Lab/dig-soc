@@ -16,6 +16,12 @@ h2 {
   padding-left: 0;
 }
 
+// To fix the wierd margin bleed so it doesn't scroll horizontal
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
 .black {
   background-color: #000;
   color: #fff;
@@ -60,11 +66,11 @@ h2 {
 }
 
 #mapid {
-      height: 600px;
-      width: 100%;
-      margin:0;
-      background-color: green;
-     }
+  height: 400px;
+  width: 100%;
+  margin:0;
+  background-color: green;
+}
 
 #city-data {
 	height: 200px;
@@ -84,21 +90,43 @@ h2 {
 
 #title {
   font-weight: 700;
-  font-size: 14.9vmin;
+  font-size: 11vmin;
   color: #fff;
   width: 33%;
-  line-height: .8em
+  line-height: .8em;
+  text-shadow: 2px 1px 20px #2511ee96;
 }
 
 #hook-text {
-    color: $blue;
-    width: 43%;
-   background-color: #fff;
-   display: block;
-   padding: 1em;
-  margin: 5em 0 0 0;
+  color: $blue;
+  width: 23%;
+  background-color: #fff;
+  display: block;
+  padding: 1em;
+  margin: 3em 0 0 0;
+  font-weight: 700;
+  line-height: 1.1em;
 }
 
+.wide-pics {
+  width: 100%;
+  height: 70%;
+  display: block;
+  margin: 0 auto;
+}
+
+.faculty-avatar {
+  width: 70px;
+  height: 70px;
+  border: solid 4px #FFB300;
+  border-radius: 50%;
+  float: right;
+  margin: 10px;
+}
+
+.btn {
+  font-weight: 700;
+}
 
 .btn-soc {
   border-radius: 0;
@@ -150,8 +178,9 @@ h2 {
 
 .stripes {
   background: repeating-linear-gradient(45deg, #fff, #fff 7px, #000 7px, #000 8px);
-    min-height: 4em;
+  min-height: 4em;
   width:100%;
+  background-attachment: fixed;
 }
 
 #description {
@@ -308,15 +337,15 @@ a.btn-contact {
 /*FLOATING BUTTON*/
 #contact-menu {
   position: fixed;
-  right: -2.6em;
+  right: -2.1em;
   top: 50%;
-  width: 7em;
+  width: 6em;
   height: 1.9em;
   margin-top: -2em;
   background: $pink;
   border: solid $orange;
   border-width: 4px 4px 0 4px;
-  font-size: 1.9em;
+  font-size: 1.5em;
   transform: rotate(-90deg);
   padding: 0 0 2px 0;
   box-shadow: rgba(0,0,0,0.5) 0 0.1em 0.5em;
