@@ -104,11 +104,12 @@ h2 {
   background-color: #fff;
   display: block;
   padding: 1em;
-  margin: 3em 0 0 0;
+  margin: 3em 0 0 10%;
   font-weight: 700;
   line-height: 1.1em;
   text-align: center;
   border-radius: 50%;
+  // box-shadow: inset 2px 2px 5px 0px rgba(0, 0, 0, 0.6);
   // border: solid 2px $blue;
 }
 
@@ -338,7 +339,7 @@ a.btn-contact {
   color: #fff;  
 }
 
-/*FLOATING BUTTON*/
+/*FLOATING BUTTON & MODAL POPUP*/
 
 .modal-container {
   margin: 60px auto;
@@ -362,6 +363,24 @@ a.btn-contact {
     box-shadow: rgba(0,0,0,0.5) 0 0.1em 0.5em;
     z-index: 30000;
   }
+  .modal-btn2 {
+    position: fixed;
+    right: -2.1em;
+    top: 50%;
+    width: 6em;
+    height: 1.9em;
+    margin-top: -2em;
+    // background: $pink;
+    // border: solid $orange;
+    border-width: 4px 4px 0 4px;
+    font-size: 1.5em;
+    text-align: center;
+    // color: white;
+    // transform: rotate(-90deg);
+    padding: 0 0 2px 0;
+    // box-shadow: rgba(0,0,0,0.5) 0 0.1em 0.5em;
+    // z-index: 30000;
+  }
   .modal-content, 
   .modal-backdrop {
     height: 0; 
@@ -373,13 +392,13 @@ a.btn-contact {
     transition: opacity 0.2s ease-in; 
   }
   .modal-close {
-    color: #aaa;
+    color: #6d6d6d;
     position: absolute;
     right: 5px;
     top: 5px;
     padding-top: 3px;
     background: #fff;
-    font-size: 16px;
+    font-size: 20px;
     width: 25px;
     height: 25px;
     font-weight: bold;
@@ -422,20 +441,23 @@ a.btn-contact {
     &:checked ~ .modal-content {
       opacity: 1;
       background-color: #fff;
-      max-width: 600px;
+      // max-width: 600px;
       width: 50%;
       height: 50%;
       padding: 10px 30px;
       position: fixed;
-      left: calc(50% - 200px);
+      left: calc(25%);
       top: 12%;
       border-radius: 4px;
       z-index: 30002;
       pointer-events: auto;
       cursor: auto;
       visibility: visible;      
-      box-shadow: 0 3px 7px rgba(0, 0, 0, 0.6);  
-      @media (max-width: 400px) { left: 0; }                   
+      // box-shadow: 0 3px 7px rgba(0, 0, 0, 0.6);  
+      @media (max-width: 400px) {
+        left: 0;
+        width: 100%;
+       }                   
     }  
   }
 }
@@ -445,7 +467,26 @@ a.btn-contact {
 //   color: white;
 // }
 
+/*FIX FOR MODAL BOX DIMENSIONS*/
 
+.smcx-embed {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 100% !important;
+}
+
+.smcx-embed>.smcx-iframe-container {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 100% !important;
+}
+
+/*FIX FOR FOOTER CONTACT BUTTON COLORS*/
+
+a:not([href]):not([tabindex]) {
+  color: $pink;
+  text-decoration: underline;
+}
 
 /*MOBILE LAND*/
 
