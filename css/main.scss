@@ -69,7 +69,7 @@ h2 {
   height: 320px;
   width: 100%;
   margin:0;
-  background-color: green;
+  background-color: #d9dac3;
 }
 
 #city-data {
@@ -118,6 +118,17 @@ h2 {
 #data-map {
   font-size: .9em;
   padding-top: 10px;
+}
+
+/* ADDING UNDERLINE LINKS TO LEAFLET */
+.leaflet-control-attribution a {
+  text-decoration: underline; 
+}
+
+.subheading {
+  color: $blue;
+  font-weight: 700;
+  font-size: 1.1em;
 }
 
 .wide-pics {
@@ -450,7 +461,7 @@ a.btn-contact {
       background-color: #fff;
       // max-width: 600px;
       width: 50%;
-      height: 50%;
+      height: 75%;
       padding: 10px 30px;
       position: fixed;
       left: calc(25%);

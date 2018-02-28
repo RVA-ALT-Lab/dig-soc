@@ -141,7 +141,7 @@ fetch("//freegeoip.net/json/").catch(function() {
         mapMaker(lat, long);
         geoId = getGeoId(city, state);
         console.log('geoId - ' + geoId);
-        basicName(city, state); //set name of location basics 
+        // basicName(city, state); //set name of location basics 
     }
 })
 
@@ -153,20 +153,20 @@ function blockContent() {
 
 //set city demo box 
 
-function basicName(city, state) {
-    if (city && state){
-        var theCity = document.getElementById('city');
-        theCity.innerHTML = city;
-        var theState = document.getElementById('state');
-        theState.innerHTML = state;
-    } else {
-        var theCity = document.getElementById('city');
-        theCity.innerHTML = 'Richmond';
-        var theState = document.getElementById('state');
-        theState.innerHTML = 'Virginia';
-    }
+// function basicName(city, state) {
+//     if (city && state){
+//         var theCity = document.getElementById('city');
+//         theCity.innerHTML = city;
+//         var theState = document.getElementById('state');
+//         theState.innerHTML = state;
+//     } else {
+//         var theCity = document.getElementById('city');
+//         theCity.innerHTML = 'Richmond';
+//         var theState = document.getElementById('state');
+//         theState.innerHTML = 'Virginia';
+//     }
 
-}
+// }
 
 
 //make the leaflet map
@@ -258,16 +258,16 @@ function makeData(geoId) {
             }
             console.log(niceData);
             makeChart(chartNames, chartNums, ' ');
-        }).then(function() {
-            totalPop(total);
+        // }).then(function() {
+        //     totalPop(total);
         });
 
 }
 
-function totalPop(total) {
-    var pop = document.getElementById('pop');
-    pop.innerHTML = total;
-}
+// function totalPop(total) {
+//     var pop = document.getElementById('pop');
+//     pop.innerHTML = total;
+// }
 
 function makeChart(labels, numbers, title) {
     var ctx = document.getElementById("myChart").getContext('2d');
