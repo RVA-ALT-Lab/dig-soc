@@ -342,6 +342,12 @@ function makeMedium(data) {
 // Select all links with hashes
 $(document).ready(function() {
 
+    setTimeout(function() {
+        var iframes = document.querySelectorAll('iframe')
+        console.log(iframes);
+        iframes.forEach( (item, index) => { item.setAttribute('title', 'survey' + index)})
+    }, 3000);
+
     $('a[href*="#"]')
         // Remove links that don't actually link to anything
         .not('[href="#"]')
