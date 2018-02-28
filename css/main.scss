@@ -66,7 +66,7 @@ h2 {
 }
 
 #mapid {
-  height: 400px;
+  height: 320px;
   width: 100%;
   margin:0;
   background-color: green;
@@ -99,18 +99,25 @@ h2 {
 
 #hook-text {
   color: $blue;
-  width: 150px;
-  height: 150px;
+  width: 16%;
+  // height: 200px;
   background-color: #fff;
+  // background-size: 12px 12px;
+  // background-image: linear-gradient(to right , #eaeaea 1px, transparent 1px), linear-gradient(to bottom, #eaeaea 1px, transparent 1px);
   display: block;
   padding: 1em;
-  margin: 3em 0 0 10%;
+  margin: 2em 0 0 6%;
   font-weight: 700;
   line-height: 1.1em;
-  text-align: center;
-  border-radius: 50%;
+  // text-align: center;
+  // border-radius: 50%;
   // box-shadow: inset 2px 2px 5px 0px rgba(0, 0, 0, 0.6);
-  // border: solid 2px $blue;
+  // border: solid 4px $blue;
+}
+
+#data-map {
+  font-size: .9em;
+  padding-top: 10px;
 }
 
 .wide-pics {
@@ -467,7 +474,7 @@ a.btn-contact {
 //   color: white;
 // }
 
-/*FIX FOR MODAL BOX DIMENSIONS*/
+/*FIX FOR MODAL BOX DIMENSIONS AND SURVEYMONKEY COLORS*/
 
 .smcx-embed {
   width: 100% !important;
@@ -480,6 +487,14 @@ a.btn-contact {
   max-width: 100% !important;
   height: 100% !important;
 }
+
+// .survey-page .survey-page-header .survey-title-container {
+//   background-color: #2511EE !important;
+// }
+
+// html.auto-scroll .new-button {
+//   background-color: #2511EE !important;
+// }
 
 /*FIX FOR FOOTER CONTACT BUTTON COLORS*/
 

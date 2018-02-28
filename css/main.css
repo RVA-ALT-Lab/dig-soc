@@ -49,7 +49,7 @@ h2 {
   z-index: 4000; }
 
 #mapid {
-  height: 400px;
+  height: 320px;
   width: 100%;
   margin: 0;
   background-color: green; }
@@ -77,16 +77,17 @@ h2 {
 
 #hook-text {
   color: #2511EE;
-  width: 150px;
-  height: 150px;
+  width: 16%;
   background-color: #fff;
   display: block;
   padding: 1em;
-  margin: 3em 0 0 10%;
+  margin: 2em 0 0 6%;
   font-weight: 700;
-  line-height: 1.1em;
-  text-align: center;
-  border-radius: 50%; }
+  line-height: 1.1em; }
+
+#data-map {
+  font-size: .9em;
+  padding-top: 10px; }
 
 .wide-pics {
   width: 100%;
@@ -378,7 +379,7 @@ a.btn-contact {
           left: 0;
           width: 100%; } }
 
-/*FIX FOR MODAL BOX DIMENSIONS*/
+/*FIX FOR MODAL BOX DIMENSIONS AND SURVEYMONKEY COLORS*/
 .smcx-embed {
   width: 100% !important;
   max-width: 100% !important;
