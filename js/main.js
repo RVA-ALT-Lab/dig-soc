@@ -250,7 +250,7 @@ function makeData(geoId) {
             for (i = 0; i < numColumns; i++) {
                 var title = titles[Object.keys(titles)[i]].name;
                 var number = nums[Object.keys(nums)[i]];
-                 if (i === 0 ){} else if (i < 10) { //skips the total number column
+                 if (i === 0 || i === 1){} else if (i < 10) { //skips the total number column
                     chartNums.push(number);
                     chartNames.push(title);
                     niceData[title] = number;
@@ -278,7 +278,7 @@ function makeChart(labels, numbers, title) {
 
             datasets: [{
                 label: title,
-                backgroundColor: ['#2511EE','#FFB300', '#FFB300', '#FFB300', '#FFB300','#00838b', '#00838b', '#00838b', '#00838b'],
+                backgroundColor: ['#FFB300', '#FFB300', '#FFB300', '#FFB300','#00838b', '#00838b', '#00838b', '#00838b'],
                 data: numbers,               
             }]
         },
