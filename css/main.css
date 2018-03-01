@@ -93,6 +93,9 @@ h2 {
 .leaflet-control-attribution a {
   text-decoration: underline; }
 
+#mapid:focus {
+  border: 2px solid red !important; }
+
 .subheading {
   color: #2511EE;
   font-weight: 700;

@@ -383,3 +383,12 @@ $(document).ready(function() {
             }
         });
 });
+
+
+//clean up leaflet accessibility from http://melmo.github.io/accessibility/berlin.js/code/dist/leaflet.html
+
+// remove the shadow pane (otherwise each shadow image is read out)
+$('.leaflet-shadow-pane').remove();
+    
+// prevent screen readers from reading out each map tile
+$('.leaflet-tile-container img, .leaflet-shadow-pane img').attr('role','presentation').attr('alt','');

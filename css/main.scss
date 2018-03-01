@@ -125,6 +125,10 @@ h2 {
   text-decoration: underline; 
 }
 
+#mapid:focus {
+  border: 2px solid red !important;
+}
+
 .subheading {
   color: $blue;
   font-weight: 700;
