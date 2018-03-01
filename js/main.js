@@ -336,6 +336,8 @@ $(document).ready(function() {
     setTimeout(function() {
         var iframes = document.querySelectorAll('iframe')
         //console.log(iframes);
+        var d = new Date(document.lastModified);
+        document.getElementById("date-modified").innerHTML=d.toLocaleDateString();
         iframes.forEach( (item, index) => { item.setAttribute('title', 'survey' + index)})
     }, 3000);
 
