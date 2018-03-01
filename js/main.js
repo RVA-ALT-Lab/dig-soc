@@ -375,6 +375,17 @@ $(document).ready(function() {
         });
 });
 
+//modal on focus shift
+
+window.addEventListener('load', function() {
+    var theModal = document.getElementsByClassName('modal-container');
+    theModal[0].onclick = function() {showForm()};
+
+});
+function showForm(){
+  var form = document.getElementById('theModal');
+  form.focus();
+}
 
 //clean up leaflet accessibility from http://melmo.github.io/accessibility/berlin.js/code/dist/leaflet.html
 
