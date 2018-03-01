@@ -83,25 +83,16 @@ function showCourseDetail(){
 }
 
 //FACULTY
-function setFaculty(data) {
-    for (i = 0; i < data.length; i++) {
-        var node = document.createElement("div");
-        var name = document.createTextNode(data[i].title.rendered);
-        var title = document.createTextNode(data[i].acf.title);
-        node.appendChild(name);
-        node.classList.add("faculty", "col-md-3");
-        var fac = document.getElementById("faculty").appendChild(node);
-        node.appendChild(title);
-    }
-}
+
 
 function setFac(data) {
     for (i = 0; i < data.length; i++) {
         var name = data[i].title.rendered;
         var title = data[i].acf.title;
         var img = data[i].acf.headshot_url.url;
+        var url = data[i].acf.website;
         var fac = document.getElementById("faculty");
-        fac.insertAdjacentHTML('beforeend', '<div class="col-md-3"><img class="fac-head" src="' + img + '" alt="A photo of ' + name + '."></img><div class="faculty-details"><h3>' + name + '</h3><div class="faculty-title">' + title + '</div></div></div>');
+        fac.insertAdjacentHTML('beforeend', '<div class="col-md-3"><a href="'+ url +'"><img class="fac-head" src="' + img + '" alt="A photo of ' + name + '."></img><div class="faculty-details"><h3>' + name + '</h3></a><div class="faculty-title">' + title + '</div></div></div>');
     }
 }
 
@@ -140,7 +131,7 @@ fetch("//freegeoip.net/json/").catch(function() {
         var state = location.region_code;
         mapMaker(lat, long);
         geoId = getGeoId(city, state);
-        console.log('geoId - ' + geoId);
+        //console.log('geoId - ' + geoId);
         // basicName(city, state); //set name of location basics 
     }
 })
@@ -204,9 +195,9 @@ function getGeoId(city, state) {
     var url = 'https://api.censusreporter.org/1.0/geo/search?q=' + location;
     $.getJSON(url, function(data) {}).done(function(data) {
         geoId = data.results[0].full_geoid;
-        console.log('getGeoId ' + geoId);
+        //console.log('getGeoId ' + geoId);
         makeData(geoId);
-        console.log('two-' + data.results[0].full_geoid);
+        //console.log('two-' + data.results[0].full_geoid);
         return geoId;
     })
 }
@@ -235,7 +226,7 @@ function makeData(geoId) {
             return response.json();
         })
         .then(function(data) {
-            console.log(data);
+            //console.log(data);
             var columns = data.tables[table];
             var nums = data.data[geoId][table]['estimate'];
 
@@ -256,7 +247,7 @@ function makeData(geoId) {
                     niceData[title] = number;
                 } 
             }
-            console.log(niceData);
+            //console.log(niceData);
             makeChart(chartNames, chartNums, ' ');
         // }).then(function() {
         //     totalPop(total);
@@ -311,7 +302,7 @@ fetch(medUrl).catch(function() {
         return response.json();
     }
 }).then(function(data) {
-   console.log(data);
+   //console.log(data);
    makeMedium(data);
     }
 )
@@ -344,7 +335,7 @@ $(document).ready(function() {
 
     setTimeout(function() {
         var iframes = document.querySelectorAll('iframe')
-        console.log(iframes);
+        //console.log(iframes);
         iframes.forEach( (item, index) => { item.setAttribute('title', 'survey' + index)})
     }, 3000);
 
