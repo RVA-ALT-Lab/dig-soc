@@ -446,7 +446,7 @@ a:not([href]):not([tabindex]) {
   #hook-text {
     width: 90%; }
 
-  .btn .btn-soc .btn-primary .btn-lg {
+  .btn.btn-soc.btn-primary.btn-lg {
     width: 100%;
     font-size: 0.9rem; } }
 
