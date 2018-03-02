@@ -16,6 +16,38 @@ h2 {
   padding-left: 0;
 }
 
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.sr-only-focusable:active, .sr-only-focusable:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+}
+a.skip-link {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  right: 0;
+  color: $blue;
+}
+
+.screen-reader-text {
+  font-size: inherit;
+}
+
+
 // To fix the weird margin bleed so it doesn't scroll horizontal
 .row {
   margin-left: 0;
@@ -529,6 +561,17 @@ a:not([href]):not([tabindex]) {
 		}
 
 	#hook-text {
-    	width: 90%;
-		}	
+    width: 90%;
+    }
+
+  .btn .btn-soc .btn-primary .btn-lg {
+    width: 100%;
+    font-size: 0.9rem;
+    }
 }
+
+  // @media only screen {
+  //   #hook-text {
+  //     width: 90%;
+  //     }
+  // }
