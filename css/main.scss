@@ -400,6 +400,7 @@ a.btn-contact {
   margin: 60px auto;
   padding-top: 0px;
   width: 160px;
+  -webkit-overflow-scrolling: touch;
   .modal-btn {
     position: fixed;
     right: -2.1em;
@@ -444,7 +445,8 @@ a.btn-contact {
     visibility: hidden;
     overflow: hidden; 
     cursor: pointer;
-    transition: opacity 0.2s ease-in; 
+    transition: opacity 0.2s ease-in;
+    -webkit-overflow-scrolling: touch; 
   }
   .modal-close {
     color: #6d6d6d;
@@ -490,7 +492,8 @@ a.btn-contact {
       z-index: 30001;
       visibility: visible;
       opacity: 1;      
-      transition: opacity 0.2s ease-in; 
+      transition: opacity 0.2s ease-in;
+      -webkit-overflow-scrolling: touch; 
     }
     &.active ~ .modal-content,
     &:checked ~ .modal-content {
@@ -498,20 +501,22 @@ a.btn-contact {
       background-color: #fff;
       // max-width: 600px;
       width: 50%;
-      height: 75%;
+      height: 100%;
       padding: 10px 30px;
       position: fixed;
       left: calc(25%);
-      top: 12%;
+      top: 0;
       border-radius: 4px;
       z-index: 30002;
       pointer-events: auto;
       cursor: auto;
-      visibility: visible;      
+      visibility: visible;
+      -webkit-overflow-scrolling: touch;      
       // box-shadow: 0 3px 7px rgba(0, 0, 0, 0.6);  
       @media (max-width: 400px) {
         left: 0;
         width: 100%;
+        -webkit-overflow-scrolling: touch;
        }                   
     }  
   }
@@ -557,7 +562,8 @@ a:not([href]):not([tabindex]) {
 @media only screen and (max-device-width : 780px) {
 /* Styles */
 	.hand img {
-		display: none;
+    display: block;
+    max-width: 70%;
 		}
 
 	#hook-text {
@@ -568,7 +574,42 @@ a:not([href]):not([tabindex]) {
     width: 100%;
     font-size: 0.9rem;
     }
-}
+
+  #modal-toggle {
+    display: none;  
+    &.active ~ .modal-backdrop,
+    &:checked ~ .modal-backdrop {
+      background-color: rgba(0, 0, 0, 0.6);
+      width: 100vw;
+      height: 100vh;
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: 30001;
+      visibility: visible;
+      opacity: 1;      
+      transition: opacity 0.2s ease-in; 
+    }
+    &.active ~ .modal-content,
+    &:checked ~ .modal-content {
+      opacity: 1;
+      background-color: red;
+      // max-width: 600px;
+      width: 80%;
+      height: 800px;
+      padding: 10px 30px;
+      position: fixed;
+      left: calc(5%);
+      top: 0;
+      border-radius: 4px;
+      z-index: 30002;
+      pointer-events: auto;
+      cursor: auto;
+      visibility: visible;      
+      // box-shadow: 0 3px 7px rgba(0, 0, 0, 0.6);
+        }
+      }
+    }
 
   // @media only screen {
   //   #hook-text {

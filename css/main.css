@@ -318,7 +318,8 @@ a.btn-contact {
 .modal-container {
   margin: 60px auto;
   padding-top: 0px;
-  width: 160px; }
+  width: 160px;
+  -webkit-overflow-scrolling: touch; }
   .modal-container .modal-btn {
     position: fixed;
     right: -2.1em;
@@ -355,7 +356,8 @@ a.btn-contact {
     visibility: hidden;
     overflow: hidden;
     cursor: pointer;
-    transition: opacity 0.2s ease-in; }
+    transition: opacity 0.2s ease-in;
+    -webkit-overflow-scrolling: touch; }
   .modal-container .modal-close {
     color: #6d6d6d;
     position: absolute;
@@ -400,25 +402,28 @@ a.btn-contact {
       z-index: 30001;
       visibility: visible;
       opacity: 1;
-      transition: opacity 0.2s ease-in; }
+      transition: opacity 0.2s ease-in;
+      -webkit-overflow-scrolling: touch; }
     .modal-container #modal-toggle.active ~ .modal-content, .modal-container #modal-toggle:checked ~ .modal-content {
       opacity: 1;
       background-color: #fff;
       width: 50%;
-      height: 75%;
+      height: 100%;
       padding: 10px 30px;
       position: fixed;
       left: calc(25%);
-      top: 12%;
+      top: 0;
       border-radius: 4px;
       z-index: 30002;
       pointer-events: auto;
       cursor: auto;
-      visibility: visible; }
+      visibility: visible;
+      -webkit-overflow-scrolling: touch; }
       @media (max-width: 400px) {
         .modal-container #modal-toggle.active ~ .modal-content, .modal-container #modal-toggle:checked ~ .modal-content {
           left: 0;
-          width: 100%; } }
+          width: 100%;
+          -webkit-overflow-scrolling: touch; } }
 
 /*FIX FOR MODAL BOX DIMENSIONS AND SURVEYMONKEY COLORS*/
 .smcx-embed {
@@ -441,13 +446,42 @@ a:not([href]):not([tabindex]) {
 @media only screen and (max-device-width: 780px) {
   /* Styles */
   .hand img {
-    display: none; }
+    display: block;
+    max-width: 70%; }
 
   #hook-text {
     width: 90%; }
 
   .btn.btn-soc.btn-primary.btn-lg {
     width: 100%;
-    font-size: 0.9rem; } }
+    font-size: 0.9rem; }
+
+  #modal-toggle {
+    display: none; }
+    #modal-toggle.active ~ .modal-backdrop, #modal-toggle:checked ~ .modal-backdrop {
+      background-color: rgba(0, 0, 0, 0.6);
+      width: 100vw;
+      height: 100vh;
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: 30001;
+      visibility: visible;
+      opacity: 1;
+      transition: opacity 0.2s ease-in; }
+    #modal-toggle.active ~ .modal-content, #modal-toggle:checked ~ .modal-content {
+      opacity: 1;
+      background-color: red;
+      width: 80%;
+      height: 800px;
+      padding: 10px 30px;
+      position: fixed;
+      left: calc(5%);
+      top: 0;
+      border-radius: 4px;
+      z-index: 30002;
+      pointer-events: auto;
+      cursor: auto;
+      visibility: visible; } }
 
 /*# sourceMappingURL=main.css.map */
