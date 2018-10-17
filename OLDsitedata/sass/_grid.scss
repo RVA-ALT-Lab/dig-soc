@@ -1,0 +1,54 @@
+.full-width {
+  max-width: 1200px;
+}
+
+.add-gutter {
+  padding: $gutter-height $gutter/2;
+
+  @media screen and (min-width: $bp-small) {
+    padding: $gutter-height $gutter;
+  }
+}
+
+.col {
+  margin: 0 $gutter;
+  width: $col;
+}
+
+div[class*=" col-"] {
+  padding: 0 $gutter/2;
+
+  @media screen and (min-width: $bp-small) {
+    padding: 0 $gutter;
+  }
+}
+
+@media screen and (min-width: $bp-small) {
+  .col-fourth {
+    max-width: ($col * 3) + ($gutter * 2);
+  }
+
+  .col-third {
+    max-width: ($col * 4) + ($gutter * 2);
+  }
+
+  .col-three-fourth {
+    max-width: ($col * 9) + ($gutter * 8);
+  }
+
+  .col-two-third {
+    max-width: ($col * 8) + ($gutter * 6);
+  }
+
+  .col-sixth {
+    max-width: $col * 2;
+  }
+
+  .half-col {
+    width: 50%;
+  }
+}
+
+.flex {
+  @include flex();
+}

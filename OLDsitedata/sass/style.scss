@@ -1,0 +1,533 @@
+@import "normalize";
+@import "variables";
+@import "mixins";
+@import "icon-font";
+@import "grid";
+
+body {
+  background: $color-grey;
+  font-family: $font-serif;
+  font-size: 62.5%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: $font-sans;
+  margin: 0;
+  padding: $padding-min 0;
+}
+
+h2 {
+  @include font-size(2.4);
+}
+
+h3,
+h4 {
+  font-weight: normal;
+
+
+    &.huge {
+    @include font-size(3.2);
+
+    @media screen and (min-width: $bp-small) {
+      @include font-size(4.6);
+      font-weight: bold;
+    }
+  }
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+.container {
+  background: $color-white;
+  -webkit-box-shadow: 4px 4px 22px -4px rgba(0,0,0,0.38);
+  -moz-box-shadow: 4px 4px 22px -4px rgba(0,0,0,0.38);
+  box-shadow: 4px 4px 22px -4px rgba(0,0,0,0.38);
+  @include font-size();
+  margin: 0 auto;
+}
+
+header {
+  background: $color-black;
+  color: $color-primary;
+
+  .logo {
+    max-width: $col * 4;
+
+    h1 {
+      padding: $padding-min 0 0;
+    }
+  }
+
+  .page-title {
+    background: $color-tertiary;
+    color: $color-white;
+    text-align: center;
+
+    h2,
+    h4 {
+      font-family: $font-serif;
+    }
+
+    h2 {
+      @include font-size(2.2);
+      font-weight: bold;
+      font-variant: small-caps;
+      margin: 0;
+      padding: 0;
+
+      @include breakpoint($bp-med) {
+        @include font-size(3);
+				line-height: 0.65em;
+      }
+    }
+
+    h4 {
+      font-weight: 300;
+      margin: 0;
+      padding: 0;
+
+			img {
+				height: auto;
+				line-height: 0.65em;
+			}
+    }
+
+    a {
+      @include link-colors( $color-primary, $color-white);
+      text-decoration: none;
+    }
+  }
+}
+
+figcaption {
+	background: rgba($color-black, 0.8);
+	color: $color-white;
+	padding: 0 $gutter/2;
+
+	@media screen and (min-width: $bp-small) {
+		padding: 0 0 0 $gutter;
+	}
+
+	h3 {
+		font-family: $font-sans-alt;
+	}
+}
+
+.impact {
+
+  &.bg-img {
+    background: url('../img/impact.png') no-repeat center;
+    min-height: 400px;
+
+    @media screen and (max-width: $bp-small) {
+			background-position: left center;
+      border-bottom: 2px solid $color-tertiary;
+      min-height: 200px;
+    }
+  }
+
+  aside {
+		a.button {
+			margin-top: 0;
+
+			@media screen and (min-width: $bp-small+1) {
+				margin-top: 20px;
+			}
+		}
+
+    @media screen and (min-width: $bp-smallest) {
+      margin: 0 $gutter/2;
+    }
+
+    @media screen and (min-width: $bp-small) {
+      margin: 0 $gutter 0 auto;
+      display: inline-block;
+			float: right;
+    }
+
+    &.col-fourth {
+      @media screen and (min-width: $bp-small) {
+        max-width: none;
+        margin-left: $gutter;
+        width: 225px;
+      }
+    }
+  }
+}
+
+main {
+  .digital-data {
+    background: $color-white;
+    margin-bottom: $padding-min;
+
+    h4 {
+      background: $color-tertiary;
+      color: $color-white;
+      font-weight: normal;
+
+      @include icon-bg('.icon-line-chart');
+    }
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: $padding-min;
+
+      li {
+        margin: $padding-min 0;
+      }
+    }
+  }
+  .main-copy {
+    padding: $gutter-height $gutter;
+  }
+
+  .curriculum {
+    background: $color-tertiary;
+    padding: $gutter/2 0;
+
+    h3 {
+      color: $color-white;
+      font-family: $font-sans-alt;
+      @include font-size(3.2);
+      padding: 0 $gutter/2;
+
+      @media screen and (min-width: $bp-small) {
+        padding: 0 $gutter;
+      }
+    }
+
+    .semesters {
+      margin-top: $gutter / 2;
+      padding: 0 $gutter/2;
+
+      @media screen and (min-width: $bp-small) {
+        @include flex();
+        flex-wrap: wrap;
+        flex-flow: wrap;
+        align-items: center;
+        justify-content: center;
+        padding: 0 $gutter;
+      }
+
+      @media screen and (min-width: $bp-large) {
+        background: url('../img/bar.jpg') center center repeat-x;
+        background-size: auto 60px;
+        flex-wrap: nowrap;
+        flex-flow: nowrap;
+      }
+    }
+
+    .semester {
+      background: $color-white;
+      margin: $gutter-height $padding-min;
+      position: relative;
+      z-index: 100;
+
+      h4 {
+        background: $color-accent;
+        color: $color-white;
+        @include font-size(1.5);
+
+        @include icon-bg('.icon-users');
+      }
+
+      ul {
+        margin: 0 0 0 $padding-min;
+        padding: 0;
+
+        li {
+          list-style-type: none;
+          padding: $padding-min 0;
+        }
+      }
+
+      &.col-fourth {
+        padding: 0;
+        display: block;
+
+        @media screen and (min-width: $bp-small) {
+          max-width: none;
+          margin-top: $gutter-height;
+          width: 46%;
+        }
+
+        @media screen and (min-width: $bp-large) {
+          width: 25%;
+        }
+      }
+
+      @media screen and (min-width: $bp-small) {
+        &:nth-child(odd) {
+          margin-left: 0;
+        }
+
+        &:nth-child(even) {
+          margin-right: 0;
+        }
+      }
+
+      @media screen and (min-width: $bp-large) {
+        &:nth-child(odd) {
+          margin-left: $padding-min;
+        }
+
+        &:nth-child(even) {
+          margin-right: $padding-min;
+        }
+
+        &:first-child {
+          margin-left: 0;
+        }
+
+        &:last-child {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+
+  .dig-soc {
+
+    @media screen and (min-width: $bp-med) {
+      @include flex();
+    }
+
+    .half-col {
+      background: rgba($color-accent-3, 0.25);
+      border: 1px solid $color-secondary;
+      margin: $gutter-height $gutter;
+      width: auto;
+
+      @media screen and (min-width: $bp-med) {
+        width: 50%;
+
+        &:first-child {
+          margin-right: $gutter/2;
+        }
+
+        &:last-child {
+          margin-left: $gutter/2;
+        }
+      }
+
+      h4 {
+        background: $color-secondary;
+        color: $color-white;
+        padding: $padding-min;
+      }
+
+      p,
+      li {
+        margin: 0;
+        padding: $padding-min $gutter/2;
+      }
+    }
+  }
+
+  .faculty {
+    @media screen and (min-width: $bp-larger) {
+      @include flex();
+    }
+
+    .half-col {
+      margin: $gutter-height $gutter;
+      width: auto;
+
+      @media screen and (min-width: $bp-large) {
+        &:first-child {
+          margin-right: $gutter/2;
+        }
+
+        &:last-child {
+          margin-left: $gutter/2;
+        }
+      }
+
+      @media screen and (min-width: $bp-larger) {
+        width: 50%;
+      }
+    }
+
+    .projects {
+      @media screen and (max-width: $bp-smaller) {
+        margin: 0 auto;
+      }
+    }
+
+    .project {
+
+      a {
+        background: $color-primary;
+				background-image: none;
+        border-radius: 50%;
+        color: $color-white;
+        display: block;
+        @include font-size(2);
+        font-weight: bold;
+        height: 110px;
+        margin: $gutter-height auto;
+        padding: 65px 0;
+        text-align: center;
+        text-decoration: none;
+				transition: background-image 0.5s ease-in-out;
+        width: 240px;
+
+
+        @media screen and (min-width: $bp-smaller) {
+          @include font-size(1.8);
+          float: left;
+          margin: $gutter-height $gutter/2;
+          padding: 90px 0;
+          width: 280px;
+        }
+
+        @media screen and (min-width: $bp-med) {
+          @include font-size(1.5);
+          padding: 40px 0 30px 0;
+          width: 160px;
+        }
+
+        @media screen and (min-width: $bp-large) {
+          @include font-size(1.7);
+          margin-left: $gutter/2;
+          padding: 40px 0;
+          width: 185px;
+        }
+
+        @media screen and (min-width: $bp-full) {
+          @include font-size(2);
+          padding: 60px 0;
+          width: 230px;
+        }
+
+        span {
+          display: block;
+        }
+
+				&:hover {
+					background-position: top center;
+					background-repeat: no-repeat;
+					background-size: cover;
+					opacity: 0.5;
+				}
+
+				&.johnson:hover {
+					background: url('../img/jj.jpg');
+				}
+
+				&.cottom:hover {
+					background-image: url('../img/tmc.jpg');
+				}
+
+				&.katz:hover {
+					background-image: url('../img/mk.jpg');
+				}
+
+				&.stamm:hover {
+					background-image: url('../img/ts.jpg');
+				}
+      }
+    }
+  }
+
+  .dont-wait {
+    h3 {
+      color: $color-tertiary;
+      display: inline-block;
+      @include font-size(3.2);
+      margin-top: $gutter/2;
+    }
+
+    .button {
+      @media screen and (min-width: $bp-small) {
+        display: inline-block;
+        float: right;
+      }
+    }
+  }
+}
+
+footer {
+  background: $color-accent-4;
+  color: $color-accent-2;
+  padding: $padding-min $gutter;
+
+  a {
+    @include link-colors(  $color-tertiary, $color-secondary );
+  }
+
+  .widget {
+    display: inline-block;
+    font-family: $font-sans-alt;
+    @include font-size(0.9);
+    vertical-align: top;
+
+    &.col-fourth {
+      padding-right: 0;
+    }
+
+    h5 {
+      font-family: $font-serif;
+      @include font-size(1.2);
+      font-weight: bold;
+      padding-bottom: 0;
+      text-decoration: underline;
+    }
+
+    address {
+      font-style: normal;
+    }
+
+    &.col-sixth {
+      @media screen and (min-width: $bp-small) {
+        float: right;
+      }
+    }
+
+    ul.social {
+      list-style-type: none;
+
+      li {
+        display: inline;
+
+        a {
+          color: $color-accent-2;
+          display: inline-block;
+          @include font-size(2.4);
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+
+a.button,
+.button,
+button {
+  background: $color-secondary;
+  color: $color-white;
+  display: block;
+  font-family: $font-sans-alt;
+  @include font-size(2.5);
+  font-weight: bold;
+  margin: $padding-min 0;
+  padding: $gutter/4;
+  text-align: center;
+  text-decoration: none;
+
+  &:hover {
+    background: darken($color-secondary, 10%);
+  }
+}
+
+.group:after {
+  @include clearfix();
+}

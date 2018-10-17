@@ -1,0 +1,39 @@
+/**Colors**/
+$color-primary: #FCBD10; //VCU Yellow
+$color-secondary: #69B3E7; //light blue
+$color-accent: #E57200; //orange
+$color-accent-2: #987A42; //brown
+$color-tertiary: #768692; //steal grey
+$color-accent-3: #C6AA76; //light brown
+$color-accent-4: #E9DF97; //yellowish
+
+$color-white: #FFFFFF;
+$color-black: #000000;
+$color-grey: lighten(#CFCFCF, 10%);
+
+
+/** Structure **/
+$bp-smallest: 28em;
+$bp-smaller: 32.856em;
+$bp-small: 41em;
+$bp-med: 50em;
+$bp-large: 60em;
+$bp-larger: 61.6em;
+$bp-full: 73em;
+
+$gutter: 40px;
+$col: 60px;
+$gutter-height: 12px;
+$row-height: (5 * $gutter-height);
+
+$padding-min: $gutter / 3;
+
+$max-width: 1200px;
+
+/**Typography**/
+$font-serif: 'Goudy Old Style', 'Sorts Mill Goudy', 'Garamond', 'Big Calson', serif;
+$font-sans: 'Univers LT Std', 'Oswald', 'Arial', sans-serif;
+$font-sans-alt: 'Univers Condensed', 'Oswald', 'Arial', sans-serif;
+$font-icon: 'vcu', serif;
+
+$font-size-base: 1.4;

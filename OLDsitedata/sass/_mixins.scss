@@ -1,0 +1,65 @@
+// Rem output with px fallback
+@mixin font-size($sizeValue: $font-size-base) {
+	font-size: ($sizeValue * 10) + px;
+	font-size: $sizeValue + rem;
+}
+
+@mixin link-colors($link, $hover) {
+	&:link,
+	&:visited {
+		color: $link;
+	}
+	&:hover,
+	&:focus,
+	&:active {
+		color: $hover;
+	}
+}
+
+@mixin icon-bg($icon) {
+	&:before {
+		@extend #{$icon};
+		display: inline-block;
+		font-family: $font-icon;
+		margin: 0 $padding-min;
+	}
+}
+
+@mixin flex {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+}
+
+// Center block
+@mixin center-block {
+	display: block;
+	margin: 0 auto;
+}
+
+// Clearfix
+@mixin clearfix() {
+	content: "";
+  display: table;
+  clear: both;
+}
+
+// Clear after (not all clearfix need this also)
+@mixin clearfix-after() {
+	clear: both;
+}
+
+// Media Query Helpers
+@mixin breakpoint($breakpoint, $direction: min) {
+	@media (#{$direction}-width: $breakpoint)  {
+		@content;
+	}
+}
+
+@mixin breakpoint-tweener( $bp-start, $bp-stop ) {
+	@media screen and (min-width: $bp-start) and (max-width: $bp-stop) {
+		@content;
+	}
+}
