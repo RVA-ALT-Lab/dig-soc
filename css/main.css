@@ -77,8 +77,7 @@ a.skip-link {
   z-index: 4000; }
 
 #mapid {
-  display: none; /* Remove once we have maps working again */
-  height: 320px;
+  height: 300px;
   width: 100%;
   margin: 0;
   background-color: #d9dac3; }
@@ -88,13 +87,15 @@ a.skip-link {
   width: 100%;
   background-color: #fff;
   z-index: 2000;
-  margin: 3em 0 0 4em; }
+  margin: 3em 0 0 4em;
+  display: none; }
 
 #city-data h2 {
   color: #000;
   font-weight: 400;
   text-transform: none;
-  margin-top: .5em; }
+  margin-top: .5em;
+  display: none; }
 
 #title {
   font-weight: 700;
@@ -116,7 +117,6 @@ a.skip-link {
   border-bottom: solid 6px; }
 
 #data-map {
-  display: none; /* Remove once we have maps working again */
   font-size: .9em;
   padding-top: 10px; }
 
@@ -156,10 +156,7 @@ a.skip-link {
   border: 4px solid #2511EE;
   width: 250px;
   color: #2511EE;
-  margin-top: 30px;
-  position: -webkit-sticky;
-  position: sticky;
-  z-index: 12001; }
+  margin-top: 30px; }
 
 .btn-soc:hover {
   background-color: #2511EE;

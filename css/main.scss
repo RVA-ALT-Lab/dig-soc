@@ -98,7 +98,7 @@ a.skip-link {
 }
 
 #mapid {
-  height: 320px;
+  height: 300px;
   width: 100%;
   margin:0;
   background-color: #d9dac3;
@@ -109,14 +109,16 @@ a.skip-link {
 	width: 100%;
 	background-color: #fff;
 	z-index: 2000;
-	margin: 3em 0 0 4em;
+  margin: 3em 0 0 4em;
+  display: none;
 }
 
 #city-data h2 {
 	color: #000;
 	font-weight: 400;
 	text-transform: none;
-	margin-top: .5em;
+  margin-top: .5em;
+  display: none;
 }
 
 

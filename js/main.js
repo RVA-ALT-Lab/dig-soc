@@ -109,157 +109,160 @@ function scrollTo(id) {
 
 /*MAP STUFF (not working so all of this commented out)*/
 
-// //get IP to lat/long
-// // fetch("//freegeoip.net/json/").catch(function() {
-// fetch("https://api.ipstack.com/check?access_key=e1c64ccaebb7ed48f1756424f3794082").catch(function() {
-//     var lat = 37.5538;
-//     var long = -77.4603;
-//     mapMaker(lat, long);
-//     blockContent(); //alt text for sites that are blocking IP address 
-//     var city = 'Richmond';
-//     var state = 'VA';
-// }).then(function(response) {
-//     // Convert to JSON
-//     if (response) {
-//         return response.json();
+//get IP to lat/long
+// fetch("//freegeoip.net/json/").catch(function() {
+fetch("https://api.ipstack.com/check?access_key=e1c64ccaebb7ed48f1756424f3794082").catch(function() {
+    var lat = 37.5538;
+    var long = -77.4603;
+    mapMaker(lat, long);
+    blockContent(); //alt text for sites that are blocking IP address 
+    var city = 'Richmond';
+    var state = 'VA';
+}).then(function(response) {
+    // Convert to JSON
+    if (response) {
+        return response.json();
+    }
+}).then(function(data) {
+    if (data) {
+        var location = data;
+        var lat = location.latitude;
+        var long = location.longitude;
+        var city = location.city;
+        var state = location.region_code;
+        mapMaker(lat, long);
+        geoId = getGeoId(city, state);
+        //console.log('geoId - ' + geoId);
+        // basicName(city, state); //set name of location basics 
+    }
+})
+
+//AD BLOCKER on or some other failure . . . 
+function blockContent() {
+    var blockDiv = document.getElementById('data-map');
+    blockDiv.innerHTML = 'You are running an ad blocker or something similar. That is AWESOME! Part of digital sociology is understanding how and to whom your data is shared. Other users will see data contextualized by their geographic area. We are giving you data for Richmond, VA.';
+}
+
+//set city demo box 
+
+// function basicName(city, state) {
+//     // var city = 'Richmond';
+//     // var state = 'Virginia';
+//     if (city && state){
+//         var theCity = document.getElementById('city');
+//         theCity.innerHTML = 'Richmond';
+//         var theState = document.getElementById('state');
+//         theState.innerHTML = 'Virginia';
+//     } else {
+//         var theCity = document.getElementById('city');
+//         theCity.innerHTML = 'Richmond';
+//         var theState = document.getElementById('state');
+//         theState.innerHTML = 'Virginia';
 //     }
-// }).then(function(data) {
-//     if (data) {
-//         var location = data;
-//         var lat = location.latitude;
-//         var long = location.longitude;
-//         var city = location.city;
-//         var state = location.region_code;
-//         mapMaker(lat, long);
-//         geoId = getGeoId(city, state);
-//         //console.log('geoId - ' + geoId);
-//         // basicName(city, state); //set name of location basics 
-//     }
-// })
-
-// //AD BLOCKER on or some other failure . . . 
-// function blockContent() {
-//     var blockDiv = document.getElementById('data-map');
-//     blockDiv.innerHTML = 'You are running an ad blocker or something similar. That is AWESOME! Part of digital sociology is understanding how and to whom your data is shared. Other users will see data contextualized by their geographic area. We are giving you data for Richmond, VA.';
-// }
-
-// //set city demo box 
-
-// // function basicName(city, state) {
-// //     if (city && state){
-// //         var theCity = document.getElementById('city');
-// //         theCity.innerHTML = city;
-// //         var theState = document.getElementById('state');
-// //         theState.innerHTML = state;
-// //     } else {
-// //         var theCity = document.getElementById('city');
-// //         theCity.innerHTML = 'Richmond';
-// //         var theState = document.getElementById('state');
-// //         theState.innerHTML = 'Virginia';
-// //     }
-
-// // }
-
-
-// //make the leaflet map
-// function mapMaker(lat, long) {
-//     var lat = lat;
-//     var long = long;
-//     var map = L.map("mapid", { zoomControl: false }).setView([lat, long], 12);
-//     map.touchZoom.disable();
-//     map.doubleClickZoom.disable();
-//     map.scrollWheelZoom.disable();
-//     map.boxZoom.disable();
-//     map.keyboard.disable();
-//     map.dragging.disable();
-
-//     L.tileLayer(
-//         "https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoidHd3b29kd2FyZCIsImEiOiJoamhEM2ZrIn0.VRCAedsVTQ-qdtPz8ue-5w", {
-//             minZoom: 14,
-//             maxZoom: 14,
-//             attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-//                 '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-//                 'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-//             id: "mapbox.streets"
-//         }
-//     ).addTo(map);
-// }
-
-
-// var geoId;
-
-
-
-// /*CENSUS REPORTER FETCHING*/
-// function getGeoId(city, state) {
-//     var location = city + '%2C%20' + state;
-//     var url = 'https://api.censusreporter.org/1.0/geo/search?q=' + location;
-//     $.getJSON(url, function(data) {}).done(function(data) {
-//         geoId = data.results[0].full_geoid;
-//         //console.log('getGeoId ' + geoId);
-//         makeData(geoId);
-//         //console.log('two-' + data.results[0].full_geoid);
-//         return geoId;
-//     })
-// }
-
-
-
-
-
-
-// /*POPULATION DATA*/
-// //https://api.censusreporter.org/1.0/data/show/latest?table_ids=B01001&geo_ids=&valueType=percentage
-// //https://censusreporter.org/data/table/?table=B01001&geo_ids=16000US5367000&primary_geo_id=16000US5367000#valueType|percentage
-// //https://censusreporter.org/data/table/?table=B01001&primary_geo_id=16000US5367000&geo_ids=16000US5367000
-
-// //income quintiles table = B19081
-// const table = 'B17004';
-// var total = '';
-
-
-// function makeData(geoId) {
-//     var url = 'https://api.censusreporter.org/1.0/data/show/latest?table_ids=' + table + '&geo_ids=' + geoId + '&valueType=percentage';
-
-//     fetch(url)
-//         .then(function(response) {
-//             // Convert to JSON
-//             return response.json();
-//         })
-//         .then(function(data) {
-//             //console.log(data);
-//             var columns = data.tables[table];
-//             var nums = data.data[geoId][table]['estimate'];
-
-//             var mainTitle = columns['title'];
-//             var titles = columns['columns'];
-//             //console.log(columns);
-//             var numColumns = Object.keys(titles).length;
-//             var numNums = Object.keys(nums).length;
-//             var niceData = [];
-//             var chartNums = [];
-//             var chartNames = [];
-//             for (i = 0; i < numColumns; i++) {
-//                 var title = titles[Object.keys(titles)[i]].name;
-//                 var number = nums[Object.keys(nums)[i]];
-//                  if (i === 0 || i === 1){} else if (i < 10) { //skips the total number column
-//                     chartNums.push(number);
-//                     chartNames.push(title);
-//                     niceData[title] = number;
-//                 } 
-//             }
-//             //console.log(niceData);
-//             makeChart(chartNames, chartNums, ' ');
-//         // }).then(function() {
-//         //     totalPop(total);
-//         });
 
 // }
 
-// function totalPop(total) {
-//     var pop = document.getElementById('pop');
-//     pop.innerHTML = total;
-// }
+
+//make the leaflet map
+function mapMaker(lat, long) {
+    var lat = 37.5538;
+    var long = -77.4603;
+    var map = L.map("mapid", { zoomControl: false }).setView([lat, long], 12);
+
+    map.touchZoom.disable();
+    map.doubleClickZoom.disable();
+    map.scrollWheelZoom.disable();
+    map.boxZoom.disable();
+    map.keyboard.disable();
+    map.dragging.disable();
+
+    L.tileLayer(
+        "https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoidHd3b29kd2FyZCIsImEiOiJoamhEM2ZrIn0.VRCAedsVTQ-qdtPz8ue-5w", {
+            minZoom: 14,
+            maxZoom: 14,
+            attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+                '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+                'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+            id: "mapbox.streets"
+        }
+    ).addTo(map);
+}
+
+
+var geoId = getGeoId();
+
+
+/*CENSUS REPORTER FETCHING*/
+function getGeoId(city, state) {
+    var city = 'Richmond';
+    var state = 'VA';
+    var location = city + '%2C%20' + state;
+    var url = 'https://api.censusreporter.org/1.0/geo/search?q=' + location;
+    $.getJSON(url, function(data) {}).done(function(data) {
+        geoId = data.results[0].full_geoid;
+        console.log('getGeoId ' + geoId);
+        makeData(geoId);
+        console.log('two-' + data.results[0].full_geoid);
+        return geoId;
+    })
+}
+
+
+
+
+
+/*POPULATION DATA*/
+//https://api.censusreporter.org/1.0/data/show/latest?table_ids=B01001&geo_ids=&valueType=percentage
+//https://censusreporter.org/data/table/?table=B01001&geo_ids=16000US5367000&primary_geo_id=16000US5367000#valueType|percentage
+//https://censusreporter.org/data/table/?table=B01001&primary_geo_id=16000US5367000&geo_ids=16000US5367000
+
+//income quintiles table = B19081
+const table = 'B17004';
+var total = '';
+
+
+function makeData(geoId) {
+    var url = 'https://api.censusreporter.org/1.0/data/show/latest?table_ids=' + table + '&geo_ids=' + geoId + '&valueType=percentage';
+
+    fetch(url)
+        .then(function(response) {
+            // Convert to JSON
+            return response.json();
+        })
+        .then(function(data) {
+            //console.log(data);
+            var columns = data.tables[table];
+            var nums = data.data[geoId][table]['estimate'];
+
+            var mainTitle = columns['title'];
+            var titles = columns['columns'];
+            //console.log(columns);
+            var numColumns = Object.keys(titles).length;
+            var numNums = Object.keys(nums).length;
+            var niceData = [];
+            var chartNums = [];
+            var chartNames = [];
+            for (i = 0; i < numColumns; i++) {
+                var title = titles[Object.keys(titles)[i]].name;
+                var number = nums[Object.keys(nums)[i]];
+                 if (i === 0 || i === 1){} else if (i < 10) { //skips the total number column
+                    chartNums.push(number);
+                    chartNames.push(title);
+                    niceData[title] = number;
+                } 
+            }
+            //console.log(niceData);
+            makeChart(chartNames, chartNums, ' ');
+        // }).then(function() {
+        //     totalPop(total);
+        });
+
+}
+
+function totalPop(total) {
+    var pop = document.getElementById('pop');
+    pop.innerHTML = total;
+}
 
 function makeChart(labels, numbers, title) {
     var ctx = document.getElementById("myChart").getContext('2d');
@@ -270,7 +273,7 @@ function makeChart(labels, numbers, title) {
 
             datasets: [{
                 label: title,
-                backgroundColor: ['#FFB300', '#FFB300', '#FFB300', '#FFB300','#00838b', '#00838b', '#00838b', '#00838b'],
+                backgroundColor: ['#FFB300', '#FFB300', '#FFB300', '#FFB300','#BD10E0', '#BD10E0', '#BD10E0', '#BD10E0'],
                 data: numbers,               
             }]
         },
