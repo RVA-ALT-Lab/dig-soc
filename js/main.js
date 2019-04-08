@@ -200,9 +200,9 @@ function getGeoId(city, state) {
     var url = 'https://api.censusreporter.org/1.0/geo/search?q=' + location;
     $.getJSON(url, function(data) {}).done(function(data) {
         geoId = data.results[0].full_geoid;
-        console.log('getGeoId ' + geoId);
+        // console.log('getGeoId ' + geoId);
         makeData(geoId);
-        console.log('two-' + data.results[0].full_geoid);
+        // console.log('two-' + data.results[0].full_geoid);
         return geoId;
     })
 }
